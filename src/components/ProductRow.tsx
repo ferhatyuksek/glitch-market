@@ -60,7 +60,10 @@ const ProductRow: FC<ProductRowProps> = ({ product }) => {
           <button
             type="button"
             className="product-action-btn"
-            
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate(`/product/${product.id}/edit`); 
+            }}
           >
             Düzenle
           </button>
