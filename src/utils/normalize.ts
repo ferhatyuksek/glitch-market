@@ -1,4 +1,4 @@
-import type { Product, ProductCategory, RawProduct } from '../types/product';
+import type { Product, ProductCategory, RawProduct } from '../types/product.ts';
 
 export const PRODUCT_CATEGORIES: ProductCategory[] = [
   'elektronik',
@@ -129,7 +129,11 @@ export function getGlitchScore(raw: RawProduct): number {
   let trimmedCategory: string | undefined;
   if (typeof raw.category === 'string') {
     trimmedCategory = raw.category.trim().toLowerCase();
-  } else if (Array.isArray(raw.category) && raw.category.length > 0 && typeof raw.category[0] === 'string') {
+  } else if (
+    Array.isArray(raw.category) &&
+    raw.category.length > 0 &&
+    typeof raw.category[0] === 'string'
+  ) {
     trimmedCategory = raw.category[0].trim().toLowerCase();
   } else {
     trimmedCategory = undefined;
@@ -170,7 +174,11 @@ export function getGlitchReport(raw: RawProduct): string[] {
   let trimmedCategory: string | undefined;
   if (typeof raw.category === 'string') {
     trimmedCategory = raw.category.trim().toLowerCase();
-  } else if (Array.isArray(raw.category) && raw.category.length > 0 && typeof raw.category[0] === 'string') {
+  } else if (
+    Array.isArray(raw.category) &&
+    raw.category.length > 0 &&
+    typeof raw.category[0] === 'string'
+  ) {
     trimmedCategory = raw.category[0].trim().toLowerCase();
   } else {
     trimmedCategory = undefined;

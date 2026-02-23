@@ -1,5 +1,5 @@
 import rawProducts from '../data/products.json';
-import type { RawProduct } from '../types/product';
+import type { RawProduct } from '../types/product.ts';
 
 let products: RawProduct[] = rawProducts;
 

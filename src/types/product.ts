@@ -1,20 +1,27 @@
-export type ProductCategory =| 'elektronik' | 'kitap' | 'giyim' | 'ev' | 'oyuncak' | 'mobilya' | 'aksesuar';
- 
+export type ProductCategory =
+  | 'elektronik'
+  | 'kitap'
+  | 'giyim'
+  | 'ev'
+  | 'oyuncak'
+  | 'mobilya'
+  | 'aksesuar';
 
 export interface RawProduct {
-  id: string;  
+  id: string;
   name: string;
-  price: string;  
-  stock: number;  
-  category: string | string[];    
+  price: string;
+  stock: number;
+  category: string | string[];
   description?: string;
 }
 
 export interface Product {
   id: string;
   name: string;
-  price: number;  
+  price: number;
   stock: number;
-  category: ProductCategory;  
-  description?: string;   
+  category: ProductCategory;
+  description?: string;
 }
+

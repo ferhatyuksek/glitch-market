@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import type { RawProduct } from '../types/product';
+import type { RawProduct } from '../types/product.ts';
 import { getGlitchScore, normalizeProduct } from '../utils/normalize';
 
 interface ProductRowProps {

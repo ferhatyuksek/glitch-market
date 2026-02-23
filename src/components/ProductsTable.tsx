@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getProducts } from '../api/products';
-import type { RawProduct } from '../types/product';
+import type { RawProduct } from '../types/product.ts';
 import ProductRow from './ProductRow';
 import { PRODUCT_CATEGORIES } from '../utils/normalize';
 import '../styles/Products.css';
