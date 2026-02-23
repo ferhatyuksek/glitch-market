@@ -1,13 +1,13 @@
-import './App.css'
+import './App.css';
+import ProductsTable from './components/ProductsTable';
 
 function App() {
   return (
-    <>
-      <div>
-      </div>
-    </>
-  )
+    <div>
+      <h1>Products Table</h1>
+      <ProductsTable />
+    </div>
+  );
 }
 
-
-export default App
+export default App;

@@ -18,7 +18,7 @@
   {
     "id": "3",
     "name": "Schrödinger'in Sweatshirtü",
-    "price": "-49.99",
+    "price": "49,99",
     "stock": -1,
     "category": ["giyim"],
     "description": "Siz giyene kadar hem stokta var hem yok."
