@@ -61,6 +61,7 @@ function ProductsTable() {
               <th className="products-th">Stok</th>
               <th className="products-th">Kategori</th>
               <th className="products-th products-th--right">Glitch Skoru</th>
+              <th className="products-th products-th--actions">İşlemler</th>
             </tr>
           </thead>
           <tbody className="products-tbody">

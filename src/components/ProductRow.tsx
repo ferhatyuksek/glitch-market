@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import type { RawProduct } from '../types/product.ts';
 import { getGlitchScore, normalizeProduct } from '../utils/normalize';
 
@@ -7,6 +8,7 @@ interface ProductRowProps {
 }
 
 const ProductRow: FC<ProductRowProps> = ({ product }) => {
+  const navigate = useNavigate();
   const normalized = normalizeProduct(product);
   const glitchScore = getGlitchScore(product);
 
@@ -25,7 +27,7 @@ const ProductRow: FC<ProductRowProps> = ({ product }) => {
   return (
     <tr className={`product-row ${severityClass}`}>
       <td className="product-cell product-cell--name">
-        {normalized.name}
+        <span className="product-name">{normalized.name}</span>
       </td>
       <td className="product-cell">
         {normalized.price} TL
@@ -42,6 +44,27 @@ const ProductRow: FC<ProductRowProps> = ({ product }) => {
         <span className={glitchScoreClass}>
           {glitchScore}
         </span>
+      </td>
+      <td className="product-cell">
+        <div className="product-actions">
+          <button
+            type="button"
+            className="product-action-btn product-action-btn--primary"
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate(`/product/${product.id}`);
+            }}
+          >
+            Detay
+          </button>
+          <button
+            type="button"
+            className="product-action-btn"
+            
+          >
+            Düzenle
+          </button>
+        </div>
       </td>
     </tr>
   );
