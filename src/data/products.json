@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1",
+    "name": "Hayalet Telefon X",
+    "price": "bedava",
+    "stock": -5,
+    "category": ["elektronik", "teknoloji"],
+    "description": "Bazen var olan, bazen yok olan bir akıllı telefon."
+  },
+  {
+    "id": "2",
+    "name": "Görünmez Hata Kitabı",
+    "price": "NaN",
+    "stock": 12,
+    "category": "kitap",
+    "description": "Siz okuyamazsınız ama hatalar sizi okuyabilir."
+  },
+  {
+    "id": "3",
+    "name": "Schrödinger'in Sweatshirtü",
+    "price": "49,99",
+    "stock": -1,
+    "category": ["giyim"],
+    "description": "Siz giyene kadar hem stokta var hem yok."
+  },
+  {
+    "id": "4",
+    "name": "Kıyamet Lambası",
+    "price": "sıfır",
+    "stock": -256,
+    "category": "ev",
+    "description": "Işık yerine hata mesajları yayar."
+  },
+  {
+    "id": "5",
+    "name": "Sonsuz Oyuncak Kutusu",
+    "price": "1e-3",
+    "stock": -42,
+    "category": ["oyuncak", "eğlence", "bozuk"],
+    "description": "Her kutunun içinden başka bir hata çıkıyor."
+  },
+  {
+    "id": "6",
+    "name": "Geçersiz Koltuk",
+    "price": "tanımsız",
+    "stock": -7,
+    "category": "mobilya",
+    "description": "Üstüne oturamazsınız, o sizin üstünüze oturur."
+  },
+  {
+    "id": "7",
+    "name": "Yarış Ayakkabı",
+    "price": "99,99",
+    "stock": 3,
+    "category": "giyim",
+    "description": "Siz koşmaya başlamadan o varış çizgisine ulaşır."
+  },
+  {
+    "id": "8",
+    "name": "Kahve Kupası",
+    "price": "sonsuz",
+    "stock": -999,
+    "category": ["ev", "mutfak"],
+    "description": "Aynı anda hem bomboş hem de dopdolu."
+  },
+  {
+    "id": "9",
+    "name": "Taşan Sırt Çantası",
+    "price": "213",
+    "stock": -100,
+    "category": "aksesuar",
+    "description": "Fermuarını çektiğinizde sistem çökebilir."
+  },
+  {
+    "id": "10",
+    "name": "Bozuk Duvar Saati",
+    "price": "12:34",
+    "stock": -60,
+    "category": ["ev"],
+    "description": "Her zaman projenin teslim vaktini gösterir."
+  }
+]
