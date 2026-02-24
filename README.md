@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+## Glitch Market - Ürün Yönetim Paneli
+Bu uygulama, bir e-ticaret sistemindeki tutarsız ("glitch") verileri tespit etmek, bu verileri normalize ederek kullanıcıya sunmak ve verilerin güvenli bir şekilde güncellenmesini sağlamak amacıyla geliştirilmiş bir yönetim arayüzüdür.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Kurulum ve Çalıştırma
+Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
 
-Currently, two official plugins are available:
+Bash
+npm install
+npm run dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Tarayıcıda Açın:
+Terminalde belirtilen adrese (genellikle http://localhost:5173) giderek uygulamayı inceleyebilirsiniz.
 
-## React Compiler
+## Kısa Mimari Açıklama
+Klasör Yapısı (Folder Structure)
+Uygulama, kodun okunabilirliğini ve bakımını kolaylaştırmak için şu yapıda kurgulanmıştır:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+src/api: API isteklerinin (CRUD işlemleri) toplandığı katman (products.ts).
 
-## Expanding the ESLint configuration
+src/components: Sayfa bazlı ana bileşenler (ProductDetailPage.tsx, EditProductPage.tsx) ve tekrar kullanılabilir UI parçaları (ProductTable.tsx, ProductRow.tsx).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+src/utils: Normalizasyon mantığının ve hata analizlerinin yapıldığı merkezi nokta (normalize.ts).
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+src/types: TypeScript arayüz tanımlamaları ile veri güvenliğinin sağlandığı klasör.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+src/data: Mock veri setinin bulunduğu alan (products.json).
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Veri Akışı 
+Veri yönetimi için modern TanStack Query (React Query) mimarisi kullanılmıştır:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Server State: Veriler API katmanından çekilir ve useQuery ile önbelleğe alınır.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Normalization: Ham veri (raw data) henüz bileşenlere ulaşmadan utils/normalize.ts üzerinden süzgeçten geçirilir.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+UI Rendering: Temizlenmiş veri arayüzde gösterilirken, eş zamanlı olarak "Glitch Raporu" ile ham verideki hatalar kullanıcıya sunulur.
+
+Cache Sync: Güncelleme (mutation) sonrası invalidateQueries tetiklenerek uygulamanın tüm sayfalarında güncel verinin gösterilmesi sağlanır.
+
+## Normalize Yaklaşımı & Glitch Handling
+Uygulamanın temel amacı, bozuk veriyi düzeltip sisteme geri kazandırmaktır.
+
+## Hangi Verileri Nasıl Normalize Ettim?
+Normalizasyon sürecinde src/utils/normalize.ts dosyası ana kontrol merkezi olarak çalışır:
+
+Ürün İsmi: Başındaki ve sonundaki görünmeyen boşluklar trim() ile temizlenir.
+
+Fiyat: String veya tanımsız (undefined) gelen fiyat verileri sayısal formata çevrilir. Geçersiz durumlarda 0 atanarak sistemin çökmesi engellenir.
+
+Stok: Negatif değerler iş mantığı gereği 0 olarak normalize edilir.
+
+## Glitch Handling Stratejisi
+Karşılaştırmalı Analiz: Ham veri ile normalize edilmiş veri arasındaki farklar anlık olarak analiz edilir.
+
+Şeffaf Raporlama: Eğer bir veride düzeltme yapıldıysa (örneğin fiyat "tanımsız"dan 0'a çekildiyse), bu durum "Glitch Analiz Raporu" panelinde kullanıcıya gerekçesiyle gösterilir.
+
+Form Koruması: Düzenleme sayfasında kullanıcıya her zaman normalize edilmiş temiz veri sunulur; böylece hatalı verinin veritabanına tekrar yazılmasının önüne geçilir.
+
+## Edge-Case Yaklaşımı
+Race Condition: Veri güncellendikten hemen sonra sayfa geçişlerinde eski verinin görünmemesi için asenkron cache temizleme stratejisi uygulanmıştır.
+
+Erişim Kontrolü: Geçersiz bir ürün ID'si ile sayfaya girilmeye çalışıldığında kullanıcıyı ana sayfaya yönlendiren veya hata mesajı gösteren kontroller eklenmiştir.
