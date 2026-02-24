@@ -4,12 +4,14 @@ Bu uygulama, bir e-ticaret sistemindeki tutarsız ("glitch") verileri tespit etm
 ## Kurulum ve Çalıştırma
 Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
 
-Bash
+# Bağımlılıkları yükleyin
 npm install
+
+# Uygulamayı geliştirme modunda başlatın
 npm run dev
 
 Tarayıcıda Açın:
-Terminalde belirtilen adrese (genellikle http://localhost:5173) giderek uygulamayı inceleyebilirsiniz.
+Terminalde belirtilen adrese (genellikle http://localhost:5173) 
 
 ## Kısa Mimari Açıklama
 Klasör Yapısı (Folder Structure)
