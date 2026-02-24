@@ -4,10 +4,10 @@ Bu uygulama, bir e-ticaret sistemindeki tutarsız ("glitch") verileri tespit etm
 ## Kurulum ve Çalıştırma
 Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
 
-# Bağımlılıkları yükleyin
+## Bağımlılıkları yükleyin
 npm install
 
-# Uygulamayı geliştirme modunda başlatın
+## Uygulamayı geliştirme modunda başlatın
 npm run dev
 
 Tarayıcıda Açın:
