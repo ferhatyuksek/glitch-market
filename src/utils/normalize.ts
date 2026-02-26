@@ -22,9 +22,10 @@ export function normalizePrice(rawPrice: string): number {
   return parsed;
 }
 
-export function normalizeStock(rawStock: number): number {
-  if (typeof rawStock !== 'number') return 0;
-  return rawStock < 0 ? 0 : rawStock;
+export function normalizeStock(rawStock: any): number {
+  const stockAsNumber = Number(rawStock);
+  if (isNaN(stockAsNumber)) return 0;
+  return stockAsNumber < 0 ? 0 : stockAsNumber;
 }
 
 export function calculateTypoDistance(a: string, b: string): number {

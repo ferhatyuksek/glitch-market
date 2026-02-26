@@ -8,10 +8,10 @@ export type ProductCategory =
   | 'aksesuar';
 
 export interface RawProduct {
-  id: string;
+  id: string ;
   name: string;
   price: string;
-  stock: number;
+  stock: number | string;
   category: string | string[];
   description?: string;
 }

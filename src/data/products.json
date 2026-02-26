@@ -27,7 +27,7 @@
     "id": "4",
     "name": "Kıyamet Lambası",
     "price": "sıfır",
-    "stock": -256,
+    "stock": "eksi",
     "category": "ev",
     "description": "Işık yerine hata mesajları yayar."
   },
@@ -74,7 +74,7 @@
   {
     "id": "10",
     "name": "Bozuk Duvar Saati",
-    "price": "12:34",
+    "price": "1,34",
     "stock": -60,
     "category": ["ev"],
     "description": "Her zaman projenin teslim vaktini gösterir."
