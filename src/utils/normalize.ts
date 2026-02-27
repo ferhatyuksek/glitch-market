@@ -191,9 +191,8 @@ export function getGlitchReport(raw: RawProduct): string[] {
   }
 
   const cleanedName = cleanName(raw.name);
-  const hasSymbol = /[^a-zA-Z0-9\s]/.test(cleanedName);
-  if (cleanedName.length < 3 || hasSymbol) {
-    report.push('Ürün adı düzeltildi');
+  if (!cleanedName) {
+    report.push('Ürün adı boş bırakılmış');
   }
 
   return report;
