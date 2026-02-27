@@ -5,7 +5,7 @@ Bu uygulama, bir e-ticaret sistemindeki tutarsız ("glitch") verileri tespit etm
 Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
 
 ## Uygulamayı geliştirme modunda başlatın
-npm run dev
+npm run dev -
 npm install
 
 ## Kısa Mimari Açıklama
