@@ -143,13 +143,12 @@ export function getGlitchScore(raw: RawProduct): number {
     (c) => c.toLowerCase() === trimmedCategory,
   );
   if (!categoryValid) {
-    score += 20;
+    score += 10;
   }
 
   const cleanedName = cleanName(raw.name);
-  const hasSymbol = /[^a-zA-Z0-9\s]/.test(cleanedName);
-  if (cleanedName.length < 3 || hasSymbol) {
-    score += 10;
+  if (!cleanedName) {
+    score += 20;
   }
 
   if (score > 100) score = 100;
@@ -192,9 +191,8 @@ export function getGlitchReport(raw: RawProduct): string[] {
   }
 
   const cleanedName = cleanName(raw.name);
-  const hasSymbol = /[^a-zA-Z0-9\s]/.test(cleanedName);
-  if (cleanedName.length < 3 || hasSymbol) {
-    report.push('Ürün adı düzeltildi');
+  if (!cleanedName) {
+    report.push('Ürün adı boş bırakılmış');
   }
 
   return report;

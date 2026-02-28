@@ -9,7 +9,7 @@
   },
   {
     "id": "2",
-    "name": "Görünmez Hata Kitabı",
+    "name": "Görünmez       Hata   Kitabı   📘",
     "price": "NaN",
     "stock": 12,
     "category": "kitap",
@@ -25,10 +25,10 @@
   },
   {
     "id": "4",
-    "name": "Kıyamet Lambası",
+    "name": "Kıyamet    Lambası",
     "price": "sıfır",
-    "stock": "eksi",
-    "category": "ev",
+    "stock": -43,
+    "category": "ev,lamba",
     "description": "Işık yerine hata mesajları yayar."
   },
   {
@@ -49,7 +49,7 @@
   },
   {
     "id": "7",
-    "name": "Yarış Ayakkabı",
+    "name": "Yarış Ayakkabı 👟",
     "price": "99,99",
     "stock": 3,
     "category": "giyim",
@@ -57,7 +57,7 @@
   },
   {
     "id": "8",
-    "name": "Kahve Kupası",
+    "name": "Kahve Kupası☕️",
     "price": "sonsuz",
     "stock": -999,
     "category": ["ev", "mutfak"],
